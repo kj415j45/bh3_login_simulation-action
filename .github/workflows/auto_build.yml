@@ -36,14 +36,14 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: gen JKS File
-        run: keytool -genkey -alias "myalias" -keyalg RSA -keysize 2048 -keystore app/keystore.jks -storepass "mypassword" -keypass "mykeypassword" -dname "CN=mydomain.com, OU=MyOrgUnit, O=MyOrg, L=MyCity, S=MyState, C=MyCountry" -noprompt
+        run: keytool -genkey -alias "myalias" -keyalg RSA -keysize 2048 -keystore app/keystore.jks -storepass "mypassword" -keypass "mypassword" -dname "CN=mydomain.com, OU=MyOrgUnit, O=MyOrg, L=MyCity, S=MyState, C=MyCountry" -noprompt
 
       - name: Build APK with Gradle (DEV)
         if: ${{ github.ref == 'refs/heads/dev' }}
         env:
           KEYSTORE_PASSWORD: 'mypassword'
           KEY_ALIAS: 'myalias'
-          KEY_PASSWORD: 'mykeypassword'
+          KEY_PASSWORD: 'mypassword'
           NAME_SUFFIX: '.dev'
         run: |
           chmod +x gradlew
@@ -55,7 +55,7 @@ jobs:
         env:
           KEYSTORE_PASSWORD: 'mypassword'
           KEY_ALIAS: 'myalias'
-          KEY_PASSWORD: 'mykeypassword'
+          KEY_PASSWORD: 'mypassword'
           NAME_SUFFIX: ''
         run: |
           chmod +x gradlew
