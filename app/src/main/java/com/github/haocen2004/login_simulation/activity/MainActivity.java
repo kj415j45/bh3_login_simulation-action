@@ -122,11 +122,11 @@ public class MainActivity extends BaseActivity implements ForegroundCallbacks.Li
                 JSONObject json;
                 if (feedback != null) {
                     json = new JSONObject(feedback);
-                    if (json.has("disable_scanner") && json.getBoolean("disable_scanner")) {
-                        Intent disableIntent = new Intent(getApplicationContext(), DisableActivity.class);
-                        startActivity(disableIntent);
-                        return;
-                    }
+                    // if (json.has("disable_scanner") && json.getBoolean("disable_scanner")) {
+                    //     Intent disableIntent = new Intent(getApplicationContext(), DisableActivity.class);
+                    //     startActivity(disableIntent);
+                    //     return;
+                    // }
                     app_pref.edit().putString("cloud_bh_ver", json.getString("bh_ver"))
                             .putString("mdk_ver", json.getString("mdk_ver"))
                             .putString("sp_url", json.getString("sp_url"))
